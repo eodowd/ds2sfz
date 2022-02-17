@@ -28,13 +28,6 @@ default_path= // relative path of your samples
 // Your mapping starts here
 // *****************************************************************************
 
-<group> // 1
-
-// Parameters that affect multiple regions go here
-
-
-  trigger=attack    // or release or first or legato
-  loop_mode=no_loop // or loop_continuous or one_shot or loop_sustain
 
 
 """
@@ -50,23 +43,28 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             tree = ET.parse(file.filename)
-            f = open('instrument.sfz', 'w')
-            f.write(header)
-            for neighbor in tree.iter('sample'):
-                getchi = neighbor.get('path')
-                root = neighbor.get('rootNote')
-                lokey = neighbor.get('loNote')
-                hikey = neighbor.get('hiNote')
-                hivel = neighbor.get('hiVel')
-                lovel = neighbor.get('loVel')
+            for gro in tree.iter('group'):
+                name = gro.get('name')
+                f = open('instrument {}'.format(name)+'.sfz','w')
+                f.write('header'+'\n')
+                if gro.get('name') == name:
+                    for neighbor in gro.iter('sample'):
+                        getchi = neighbor.get('path')
+                        root = neighbor.get('rootNote')
+                        lokey = neighbor.get('loNote')
+                        hikey = neighbor.get('hiNote')
+                        hivel = neighbor.get('hiVel')
+                        lovel = neighbor.get('loVel')
 
-                if(hivel == None and lovel == None):
-                    hivel = 127
-                    lovel = 0
-                    f.write('<region>' + 'sample='+str(getchi)+' key= '+str(root)+' lokey= '+str(lokey)+' hikey= '+str(hikey)+' pitch_keycenter= '+str(root)+' hivel= '+str(hivel)+' lovel= '+str(lovel) + '\n')
-                else:
-                    f.write('<region>' + 'sample=' + str(getchi) + ' key= ' + str(root) + ' lokey= ' + str(lokey) + ' hikey= ' + str(hikey) + ' pitch_keycenter= ' + str(root) + ' hivel= ' + str(hivel) + ' lovel= ' + str(lovel) + '\n')
-        f.close()
+                        if(hivel == None and lovel == None):
+                            hivel = 127
+                            lovel = 0
+                            f.write('<region>' + 'sample='+str(getchi)+' key= '+str(root)+' lokey= '+str(lokey)+' hikey= '+str(hikey)+' pitch_keycenter= '+str(root)+' hivel= '+str(hivel)+' lovel= '+str(lovel) +'\n')
+                        else:
+                            f.write('<region>' + 'sample=' + str(getchi) + ' key= ' + str(root) + ' lokey= ' + str(lokey) + ' hikey= ' + str(hikey) + ' pitch_keycenter= ' + str(root) + ' hivel= ' + str(hivel) + ' lovel= ' + str(lovel) + '\n')
+
+
+                f.close()
         return render_template("info.html")
 
     return render_template("index.html")
