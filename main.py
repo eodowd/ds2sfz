@@ -46,7 +46,7 @@ def upload_file():
             for gro in tree.iter('group'):
                 name = gro.get('name')
                 f = open('instrument {}'.format(name)+'.sfz','w')
-                f.write('header'+'\n')
+                f.write(header +'\n')
                 if gro.get('name') == name:
                     for neighbor in gro.iter('sample'):
                         getchi = neighbor.get('path')
