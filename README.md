@@ -14,5 +14,5 @@ pip install pyinstaller (opptional)
 ```
 # Creating an exe 
 ```bash
-pyinstaller -w -F --add-data "templates;templates" --add-data "static;static" --icon=static/icon.ico --name=txconverter main.py
+pyinstaller -w -F --add-data "templates;templates" --add-data "static;static" --icon=static/icon.ico --name=dsconverter main.py
 ```
