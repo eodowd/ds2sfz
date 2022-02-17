@@ -1,0 +1,94 @@
+ <!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+
+
+  </head>
+  <style>
+
+   .bg-dark{
+        color: white;
+        background-color: #343a40!important;
+   }
+    .btn-dark{
+        color: white;
+        background-color: #343a40!important;
+    }
+   .card{
+
+        width: 100%;
+        border: none;
+
+   }
+   .modal-backdrop {
+        background: none!important;
+    }
+  </style>
+  <body class="bg-dark overflow-hidden">
+<div class="text-center card rounded-0 bg-dark fixed-top">
+  <div class="card-body bg-dark text-white">
+      <img src="static/dsconverter.png">
+  </div>
+</div>
+<div class="text-center">
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+    <button type="button" class="text-center btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Load File For Conversion
+</button>
+</div>
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal bg-dark overflow-hidden" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered text-white bg-dark">
+    <div class="modal-content text-white bg-dark">
+      <div class="modal-header text-white bg-dark">
+        <h5 class="modal-title bg-dark text-white" id="exampleModalLabel">decentsampler File processing(.dspreset)</h5>
+        <button type="button bg-dark text-white" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+
+</form>
+<div>
+    <form method=post enctype=multipart/form-data>
+        <div class="col-auto">
+  <label for="formFileLg" class="form-label text-white bg-dark">choose file to convert</label>
+  <input type=file name=file class="form-control bg-dark btn-dark form-control-md" id="formFileLg" type="file" required>
+        </div>
+          <div class="col-auto">
+              <hr class="bg-dark">
+    <button type="submit" class="btn text-white btn-dark">Submit</button>
+  </div>
+    </form>
+
+
+</div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="static/bootstrap.bundle.min.js"></script>
+
+    <script src="static/popper.min.js"></script>
+    <script src="static/bootstrap.min.js"></script>
+    -->
+  </body>
+</html>
