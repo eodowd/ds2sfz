@@ -28,9 +28,12 @@ default_path= // relative path of your samples
 // Your mapping starts here
 // *****************************************************************************
 
-
+<group>
 
 """
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html',e=e)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
@@ -69,9 +72,6 @@ def upload_file():
 
     return render_template("index.html")
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('index.html'), 404
 
 if __name__ == '__main__':
     ui.run()
