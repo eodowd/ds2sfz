@@ -8,7 +8,7 @@ ui = WebUI(app)
 
 
 UPLOAD_FOLDER = ''
-ALLOWED_EXTENSIONS = {'dspreset','xml'}
+ALLOWED_EXTENSIONS = {"dspreset","dspreset"}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
     return '.' in filename and \
@@ -41,12 +41,12 @@ def upload_file():
         file = request.files['file']
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            tree = ET.parse(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename.replace(" ","_")))
+            tree = ET.parse(filename)
             for gro in tree.iter('group'):
                 name = gro.get('name')
                 f = open('instrument {}'.format(name)+'.sfz','w')
-                f.write(header +'\n')
+                f.write(header+'\n')
                 if gro.get('name') == name:
                     for neighbor in gro.iter('sample'):
                         getchi = neighbor.get('path')
