@@ -11,7 +11,11 @@ pip install git+git://github.com/widdershin/flask-desktop.git
 ```bash
 pip install pyinstaller 
 ```
-# Creating an exe 
+# Creating an .exe (windows 10)
 ```bash
 pyinstaller -w -F --add-data "templates;templates" --add-data "static;static" --icon=static/icon.ico --name=dsconverter main.py
+```
+# Creating an .app (mac os big sur)
+```bash
+pyinstaller -w -F --windowed --onedir --add-data "templates:templates" --add-data "static:static" --icon=static/icon.ico --name=dsconverter main.py
 ```
