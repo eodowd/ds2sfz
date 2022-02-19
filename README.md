@@ -6,7 +6,7 @@ dsconverter is a decent sampler conversion tool for the .sfz format, it allows y
 
 # requirements
 ```bash
-pip install git+git://github.com/widdershin/flask-desktop.git
+pip install git+git://github.com/eodowd/flask-desktop.git
 ```
 ```bash
 pip install pyinstaller 
